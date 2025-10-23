@@ -396,7 +396,7 @@ function SpotifyLoginContent() {
           >
             Don&apos;t have an account?{" "}
             <a
-              href="./register"
+              href="public/register"
               style={{
                 color: "#ffffff",
                 textDecoration: "underline",
