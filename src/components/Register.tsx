@@ -3,6 +3,8 @@
 import { redirect } from "next/dist/server/api-utils";
 import { useState } from "react";
 import { useEffect } from "react";
+import Link from "next/link";
+
 
 export default function SpotifyLogin() {
   const [formData, setFormData] = useState({
@@ -330,24 +332,24 @@ export default function SpotifyLogin() {
             }}
           >
             Already have an account?{" "}
-            <a
-              href="/"
-              style={{
-                color: "#ffffff",
-                textDecoration: "none",
-                fontWeight: "700",
-              }}
-              onMouseEnter={(e) => {
-                e.currentTarget.style.color = "#1ed760";
-                e.currentTarget.style.textDecoration = "underline";
-              }}
-              onMouseLeave={(e) => {
-                e.currentTarget.style.color = "#ffffff";
-                e.currentTarget.style.textDecoration = "none";
-              }}
-            >
-              Sign in
-            </a>
+            <Link
+                href="/"
+                style={{
+                    color: "#ffffff",
+                    textDecoration: "none",
+                    fontWeight: "700",
+                }}
+                onMouseEnter={(e) => {
+                    e.currentTarget.style.color = "#1ed760";
+                    e.currentTarget.style.textDecoration = "underline";
+                }}
+                onMouseLeave={(e) => {
+                    e.currentTarget.style.color = "#ffffff";
+                    e.currentTarget.style.textDecoration = "none";
+                }}
+                >
+                Sign in
+            </Link>
           </div>
         </div>
       </div>
