@@ -17,7 +17,7 @@ export default function SpotifyLogin() {
   const [status, setStatus] = useState("idle");
   const [statusMsg, setStatusMsg] = useState("");
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
@@ -96,7 +96,7 @@ export default function SpotifyLogin() {
     handleCome();
   }, []);
 
-  const handleKeyPress = (e) => {
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === "Enter" && !loading) {
       handleSubmit();
     }

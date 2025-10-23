@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Semua field harus diisi" }, { status: 400 });
     }
 
-    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID, auth);
+    const doc = new GoogleSpreadsheet(process.env.GOOGLE_SHEET_ID!, auth);
     await doc.loadInfo();
 
     // Gunakan sheet by ID (gid)
