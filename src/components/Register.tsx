@@ -3,10 +3,8 @@
 import { redirect } from "next/dist/server/api-utils";
 import { useState } from "react";
 import { useEffect } from 'react';
-import { useSearchParams } from 'next/navigation';
 
 export default function SpotifyLogin() {
-  const searchParams = useSearchParams();
 
   const [formData, setFormData] = useState({
     email: "",
