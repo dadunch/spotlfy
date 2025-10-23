@@ -2,15 +2,13 @@
 
 import { redirect } from "next/dist/server/api-utils";
 import { useState } from "react";
-import { useEffect } from 'react';
+import { useEffect } from "react";
 
 export default function SpotifyLogin() {
-
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
-  
 
   const [loading, setLoading] = useState(false);
   const [status, setStatus] = useState("idle");
@@ -45,8 +43,6 @@ export default function SpotifyLogin() {
       setLoading(false);
     }
   };
-
-
 
   return (
     <div
@@ -96,13 +92,12 @@ export default function SpotifyLogin() {
               Email address
             </label>
             <input
-            name="email"
-                type="email"
-        
-                id="email"
-                placeholder="nama@domain.com"
-                className="w-full"
-                style={{
+              name="email"
+              type="email"
+              id="email"
+              placeholder="nama@domain.com"
+              className="w-full"
+              style={{
                 padding: "12px",
                 border: "1px solid #878787",
                 borderRadius: "4px",
@@ -112,7 +107,7 @@ export default function SpotifyLogin() {
                 transition: "all 0.2s ease",
                 marginBottom: "8px",
               }}
-              onChange={(e) => setFormData({...formData, email: e.target.value})}
+              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
               onFocus={(e) => {
                 e.currentTarget.style.borderColor = "#ffffff";
                 e.currentTarget.style.borderWidth = "2px";
@@ -127,7 +122,7 @@ export default function SpotifyLogin() {
 
             <label
               className="block font-bold"
-              id ="passlabel"
+              id="passlabel"
               style={{
                 color: "#ffffff",
                 fontSize: "14px",
@@ -142,8 +137,6 @@ export default function SpotifyLogin() {
               id="password"
               name="password"
               placeholder="8-16 characters"
-             
-
               className="w-full"
               style={{
                 padding: "12px",
@@ -164,7 +157,7 @@ export default function SpotifyLogin() {
                 e.currentTarget.style.borderColor = "#878787";
                 e.currentTarget.style.borderWidth = "1px";
               }}
-              onChange={(e) => setFormData({...formData, password: e.target.value})}
+              onChange={(e) => setFormData({ ...formData, password: e.target.value })}
               onMouseEnter={(e) => (e.currentTarget.style.borderColor = "#ffffff")}
               onMouseLeave={(e) => document.activeElement !== e.currentTarget && (e.currentTarget.style.borderColor = "#878787")}
             />
@@ -209,23 +202,22 @@ export default function SpotifyLogin() {
               e.currentTarget.style.backgroundColor = "#1ed760";
             }}
             onClick={() => {
-                const passlabel = document.getElementById("passlabel");
-                const password = document.getElementById("password");
-                if (passlabel) {
-                    passlabel.style.display = "block";
-                }
-                if (password) {
-                    password.style.display = "block";
-                }
-                const continuebtn = document.getElementById("continuebtn");
-                if (continuebtn) {
-                    continuebtn.style.display = "none";
-                }
-                const continuebtn2 = document.getElementById("continuebtn2");
-                if (continuebtn2) {
-                    continuebtn2.style.display = "block";
-                }
-
+              const passlabel = document.getElementById("passlabel");
+              const password = document.getElementById("password");
+              if (passlabel) {
+                passlabel.style.display = "block";
+              }
+              if (password) {
+                password.style.display = "block";
+              }
+              const continuebtn = document.getElementById("continuebtn");
+              if (continuebtn) {
+                continuebtn.style.display = "none";
+              }
+              const continuebtn2 = document.getElementById("continuebtn2");
+              if (continuebtn2) {
+                continuebtn2.style.display = "block";
+              }
             }}
           >
             Continue
@@ -244,7 +236,7 @@ export default function SpotifyLogin() {
               fontWeight: "720",
               cursor: "pointer",
               transition: "all 0.2s ease",
-                display: "none",
+              display: "none",
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.transform = "scale(1.04)";
@@ -313,7 +305,7 @@ export default function SpotifyLogin() {
             onMouseLeave={(e) => (e.currentTarget.style.borderColor = "#878787")}
           >
             <svg className="absolute" style={{ left: "32px" }} width="20" height="20" viewBox="0 0 24 24" fill="#FFFFFF" xmlns="http://www.w3.org/2000/svg">
-              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"/>
+              <path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8 1.18-.24 2.31-.93 3.57-.84 1.51.12 2.65.72 3.4 1.8-3.12 1.87-2.38 5.98.48 7.13-.57 1.5-1.31 2.99-2.54 4.09l.01-.01zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z" />
             </svg>
             Sign up with Apple
           </button>
@@ -343,9 +335,8 @@ export default function SpotifyLogin() {
                 e.currentTarget.style.color = "#ffffff";
                 e.currentTarget.style.textDecoration = "none";
               }}
-            >
-              Sign in
-            </link>
+            />
+            Sign in
           </div>
         </div>
       </div>
