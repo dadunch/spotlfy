@@ -411,7 +411,7 @@ export default function SpotifyLogin() {
               fontSize: "16px",
             }}
           >
-            Don't have an account?{" "}
+            Don&apos;t have an account?{" "}
             <a
               href="./register"
               style={{

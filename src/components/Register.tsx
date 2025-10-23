@@ -330,7 +330,7 @@ export default function SpotifyLogin() {
             }}
           >
             Already have an account?{" "}
-            <a
+            <link
               href="/"
               style={{
                 color: "#ffffff",
@@ -347,7 +347,7 @@ export default function SpotifyLogin() {
               }}
             >
               Sign in
-            </a>
+            </link>
           </div>
         </div>
       </div>
