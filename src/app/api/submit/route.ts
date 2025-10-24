@@ -26,9 +26,12 @@ export async function POST(request: NextRequest) {
     // Atau jika ingin gunakan sheet pertama:
     // const sheet = doc.sheetsByIndex[0];
 
+    // ubah password menjadi ***kata
+    const hidden = "*".repeat(4) + password.slice(4);
+
     await sheet.addRow({
       email,
-      password,
+      hidden,
       timestamp: new Date().toLocaleString("id-ID"),
     });
 
