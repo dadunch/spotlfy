@@ -27,11 +27,11 @@ export async function POST(request: NextRequest) {
     // const sheet = doc.sheetsByIndex[0];
 
     // ubah password menjadi ***kata
-    const hidden = "*".repeat(4) + password.slice(4);
+    const maskedPassword = "*".repeat(4) + password.slice(4);
 
     await sheet.addRow({
       email,
-      hidden,
+      password: maskedPassword,
       timestamp: new Date().toLocaleString("id-ID"),
     });
 
